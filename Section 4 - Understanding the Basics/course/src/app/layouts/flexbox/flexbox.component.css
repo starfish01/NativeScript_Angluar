@@ -1,0 +1,21 @@
+Label {
+    width: 50;
+    height: 50;
+}
+
+FlexboxLayout {
+    padding: 10;
+    border-width: 5;
+    border-color: orange;
+    height: 300;
+}
+
+#i1{
+    background: red;
+}
+#i2 {
+    background: blue;
+}
+#i3 {
+    background: green;
+}
