@@ -1,0 +1,21 @@
+<FlexboxLayout
+  id="stack1"
+  justifyContent="space-between"
+  alignItems="flex-start"
+>
+  <Label class="i1" horizontalAlignment="left" text="Item 1"></Label>
+  <Label class="i2" alignSelf="flex-end" horizontalAlignment="center" text="Item 2"></Label>
+  <Label class="i3" horizontalAlignment="right" text="Item 3"></Label>
+</FlexboxLayout>
+
+<FlexboxLayout>
+  <FlexboxLayout flexDirection="column" justifyContent="space-around" width="30%" id="stack2">
+    <Label class="i1" text="Item 1"></Label>
+    <Label class="i2" text="Item 2"></Label>
+    <Label class="i3" text="Item 3"></Label>
+  </FlexboxLayout>
+  <FlexboxLayout width="70%" id="stack3" flexDirection="column" justifyContent="space-around">
+    <Label class="i1" text="Item 1"></Label>
+    <Label class="i2" text="Item 2"></Label>
+  </FlexboxLayout>
+</FlexboxLayout>

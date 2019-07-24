@@ -1,0 +1,16 @@
+/* Add mobile styles for the component here.  */
+#i1{
+    background: red;
+}
+#i2 {
+    background: blue;
+}
+#i3 {
+    background: green;
+}
+
+
+GridLayout {
+    padding: 10;
+    border-width: 5;
+}

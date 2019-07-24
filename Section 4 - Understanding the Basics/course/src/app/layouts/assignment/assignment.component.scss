@@ -1,0 +1,40 @@
+/* Add mobile styles for the component here.  */
+
+Label {
+    width: 50;
+    height: 50;
+}
+
+#stack1 {
+    height: 30%;
+    background-color: lightblue;
+    margin: 5%;
+    margin-bottom: 0;
+}
+
+#stack2 {
+    height: 70%;
+    background-color: lightblue;
+    margin: 5%;
+    margin-right: 0;
+    .i1, .i2, .i3 {
+        margin: 10%;
+    }
+}
+#stack3 {
+    height: 70%;
+    background-color: lightblue;
+    margin: 5%;
+}
+
+.i1{
+    background: red;
+}
+.i2 {
+    background: blue;
+}
+.i3 {
+    background: green;
+}
+
+
