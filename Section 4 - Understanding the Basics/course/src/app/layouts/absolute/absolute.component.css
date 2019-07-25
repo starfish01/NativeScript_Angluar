@@ -1,0 +1,21 @@
+/* Add mobile styles for the component here.  */
+Label {
+    width: 50;
+    height: 50;
+}
+
+#i1{
+    background: red;
+}
+#i2 {
+    background: blue;
+}
+#i3 {
+    background: green;
+}
+
+AbsoluteLayout {
+    border-color: yellow;
+    border-width: 5;
+    height: 100%;
+}

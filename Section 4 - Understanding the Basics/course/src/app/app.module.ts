@@ -8,6 +8,7 @@ import { StackComponent } from "./layouts/stack/stack.component";
 import { FlexboxComponent } from "./layouts/flexbox/flexbox.component";
 import { AssignmentComponent } from "./layouts/assignment/assignment.component";
 import { GridComponent } from "./layouts/grid/grid.component";
+import { AbsoluteComponent } from "./layouts/absolute/absolute.component";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -21,7 +22,8 @@ import { GridComponent } from "./layouts/grid/grid.component";
         StackComponent,
         FlexboxComponent,
         AssignmentComponent,
-        GridComponent
+        GridComponent,
+        AbsoluteComponent
     ],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]

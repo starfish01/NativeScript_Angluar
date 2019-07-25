@@ -6,3 +6,13 @@
 // Customize any of the theme’s variables here, for instance $btn-color: red;
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
+.btn {
+    background: purple;
+    border-width: 1;
+    border-color: purple;
+    color: white;
+    width: 100%;
+    padding: 5 10;
+    border-radius: 30%;
+    margin: 5 0;
+}
