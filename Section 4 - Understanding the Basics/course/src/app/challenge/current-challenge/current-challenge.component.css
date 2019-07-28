@@ -20,3 +20,7 @@ StackLayout {
     border-radius: 30%;
     margin: 5 0;
 }
+
+ScrollView,ListView {
+    height: 100%;
+}
