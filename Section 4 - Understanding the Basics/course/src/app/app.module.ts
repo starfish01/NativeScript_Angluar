@@ -9,6 +9,7 @@ import { FlexboxComponent } from "./layouts/flexbox/flexbox.component";
 import { AssignmentComponent } from "./layouts/assignment/assignment.component";
 import { GridComponent } from "./layouts/grid/grid.component";
 import { AbsoluteComponent } from "./layouts/absolute/absolute.component";
+import { ChallengeEditComponent } from "./challenge/challenge-edit/challenge-edit.component";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
@@ -23,7 +24,8 @@ import { AbsoluteComponent } from "./layouts/absolute/absolute.component";
         FlexboxComponent,
         AssignmentComponent,
         GridComponent,
-        AbsoluteComponent
+        AbsoluteComponent,
+        ChallengeEditComponent
     ],
     providers: [],
     schemas: [NO_ERRORS_SCHEMA]
