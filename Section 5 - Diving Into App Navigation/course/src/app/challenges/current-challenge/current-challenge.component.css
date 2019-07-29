@@ -1,0 +1,23 @@
+
+.title{
+    font-size: 26;
+    text-align: center;
+    color: purple;
+    font-weight: bold;
+    margin: 10 0;
+}
+
+.btn {
+    background: purple;
+    border-width: 1;
+    border-color: purple;
+    color: white;
+    width: 100%;
+    padding: 5 10;
+    border-radius: 30%;
+    margin: 5 0;
+}
+
+ScrollView,ListView {
+    height: 60%;
+}
