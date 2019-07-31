@@ -1,0 +1,10 @@
+<ns-action-bar [title]="'Tabs'"></ns-action-bar>
+
+<TabView>
+    <StackLayout *tabItem="{title: 'Today'}">
+        <Label text="tab 1"></Label>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Current Challenge'}">
+        <Label text="tab 2"></Label>
+    </StackLayout>
+</TabView>

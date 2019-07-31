@@ -35,7 +35,7 @@ export class ActionBarComponent implements OnInit {
     }
 
     get canGoBack() {
-        return this.router.canGoBack();
+        return this.router.canGoBack() && this.showBackbutton;
     }
 
     onGoBack() {
