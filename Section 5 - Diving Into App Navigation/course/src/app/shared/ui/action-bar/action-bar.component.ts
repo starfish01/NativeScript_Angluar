@@ -19,6 +19,10 @@ export class ActionBarComponent implements OnInit {
 
     ngOnInit() {}
 
+    get android() {
+        return isAndroid;
+    }
+
     onLoadedActionBar() {
         console.log("1");
         if (isAndroid) {
