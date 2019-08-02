@@ -1,10 +1,16 @@
 <ns-action-bar [title]="'Tabs'"></ns-action-bar>
 
-<TabView androidTabsPosition="bottom" androidSelectedTabHighlightColor="blue" selectedTabTextColor='red'>
-    <page-router-outlet *tabItem="{title: 'Today'}" name="today">
+<TabView
+  androidTabsPosition="bottom"
+  androidSelectedTabHighlightColor="blue"
+  selectedTabTextColor="red"
+>
+  <page-router-outlet *tabItem="{ title: 'Today' }" name="today">
+  </page-router-outlet>
 
-    </page-router-outlet>
-    <page-router-outlet *tabItem="{title: 'Current Challenge'}" name="currentChallenge">
-
-    </page-router-outlet>
+  <page-router-outlet
+    *tabItem="{ title: 'Current Challenge' }"
+    name="currentChallenge"
+  >
+  </page-router-outlet>
 </TabView>
