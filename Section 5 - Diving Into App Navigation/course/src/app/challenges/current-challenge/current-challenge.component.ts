@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
+import { Component, ViewContainerRef } from "@angular/core";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
+import { DayModalComponent } from "../day-modal/day-modal.component";
+import { UiService } from "~/app/shared/ui.service";
 
 @Component({
     selector: "ns-current-challenge",
@@ -8,11 +10,22 @@ import { RouterExtensions } from "nativescript-angular/router";
     moduleId: module.id
 })
 export class CurrentChallengeComponent {
+    constructor(
+        private modalDialog: ModalDialogService,
+        private vcRef: ViewContainerRef,
+        private uiService: UiService,
+    ) {}
 
-    constructor(private router: RouterExtensions) {}
+    onChangeStatus() {
+        this.modalDialog.showModal(DayModalComponent, {
+            fullscreen: false,
+            viewContainerRef: this.uiService.getRootVCR() ? this.uiService.getRootVCR() : this.vcRef,
+            context: {
+                date: new Date(),
 
-    onEdit() {
-      this.router.navigate(['/challenges/edit'], {transition:{name: 'slideLeft'}});
+            }
+        }).then((result: string) => {
+            console.log(result)
+        });
     }
-
 }

@@ -1,0 +1,34 @@
+@import '~nativescript-theme-core/scss/light';
+
+$primary: purple;
+$secondary: orange;
+$disabled: grey;
+$btn-color: $primary;
+
+@import '~nativescript-theme-core/scss/index';
+
+ActionBar {
+    background-color: $primary;
+    color: white;
+}
+
+
+// .inputField {
+//     background-color: purple;
+//     color: white;
+//     margin: 10 10;
+// }
+
+.drawer-container {
+    background:linear-gradient(140deg, #2b0c72, #5c3fa0);
+    width: 80%;
+}
+
+/* .btn {
+    border-color: red;
+    width: 100%;
+    border-width: 1;
+    padding: 5 10;
+    border-radius: 30%;
+    margin: 5 5;
+} */
