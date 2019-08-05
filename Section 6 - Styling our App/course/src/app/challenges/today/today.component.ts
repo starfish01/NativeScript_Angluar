@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'ns-today',
-  templateUrl: './today.component.html',
-  styleUrls: ['./today.component.css']
+    selector: "ns-today",
+    templateUrl: "./today.component.html",
+    styleUrls: ["./today.component.scss"]
 })
 export class TodayComponent implements OnInit {
+    constructor() {}
 
-  constructor() { }
+    ngOnInit() {}
 
-  ngOnInit() {
-  }
-
+    onActionSelected(action: "complete" | "fail" | "cancel") {}
 }

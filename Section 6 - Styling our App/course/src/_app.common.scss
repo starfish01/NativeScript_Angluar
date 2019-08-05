@@ -1,16 +1,36 @@
-@import '~nativescript-theme-core/scss/light';
+@import "~nativescript-theme-core/scss/light";
 
-@import './app/theme/colors';
+@import "./app/theme/colors";
 
 $btn-color: $primary;
 
-@import '~nativescript-theme-core/scss/index';
+@import "~nativescript-theme-core/scss/index";
 
 ActionBar {
-    background-color: $primary;
-    color: white;
+  background-color: $primary;
+  color: white;
 }
 
+.form {
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field {
+  width: 80%;
+
+  .label {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .input {
+    border-bottom-width: 2;
+    border-color: $primary;
+    width: 100%;
+  }
+}
 
 // .inputField {
 //     background-color: purple;
@@ -19,8 +39,30 @@ ActionBar {
 // }
 
 .drawer-container {
-    background:linear-gradient(140deg, #2b0c72, #5c3fa0);
-    width: 80%;
+  background: linear-gradient(140deg, #2b0c72, #5c3fa0);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20;
+}
+
+.btn {
+    border-radius: 30%;
+}
+
+.btn-flat {
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 1;
+    color: $primary;
+}
+
+.h1 {
+    color: $primary;
+    font-weight: bold;
+}
+.body {
+    color: #000000;
 }
 
 /* .btn {

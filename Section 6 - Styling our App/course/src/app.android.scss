@@ -1,7 +1,8 @@
 @import 'app.common';
 @import '~nativescript-theme-core/scss/platforms/index.android';
+@import "./app/theme/colors";
 
-/* .btn {
-    background: purple;
+.btn {
+    background-color: $primary;
     color: white;
-} */
+}

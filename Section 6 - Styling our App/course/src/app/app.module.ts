@@ -8,6 +8,8 @@ import { AuthComponent } from "./auth/auth.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { DayModalComponent } from "./challenges/day-modal/day-modal.component";
 import { SharedModule } from "./shared/shared.module";
+import { ChallengeActionsComponent } from "./challenges/challenge-actions/challenge-actions.component";
+import { ChallengeActionsModule } from "./challenges/challenge-actions/challenge-actions.module";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 // import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
@@ -19,7 +21,8 @@ import { SharedModule } from "./shared/shared.module";
         NativeScriptFormsModule,
         AppRoutingModule,
         NativeScriptUISideDrawerModule,
-        SharedModule
+        SharedModule,
+        ChallengeActionsModule
     ],
     declarations: [AppComponent, AuthComponent, DayModalComponent],
     exports: [],
