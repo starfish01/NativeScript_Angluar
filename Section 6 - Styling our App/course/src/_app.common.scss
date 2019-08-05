@@ -1,8 +1,7 @@
 @import '~nativescript-theme-core/scss/light';
 
-$primary: purple;
-$secondary: orange;
-$disabled: grey;
+@import './app/theme/colors';
+
 $btn-color: $primary;
 
 @import '~nativescript-theme-core/scss/index';
