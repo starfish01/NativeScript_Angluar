@@ -31,8 +31,10 @@ ActionBar {
     }
   }
 }
+
 .fa {
-  Font-family: "FontAwesome,fa-solid-400";
+    font-family: "Font Awesome 5 Free Regular", "fa-regular-400";
+    font-weight: 400;
 }
 
 // .inputField {
@@ -47,6 +49,11 @@ ActionBar {
   justify-content: center;
   align-items: center;
   padding: 20;
+  .btn {
+    width: 80%;
+    font-size: 24;
+    height:45;
+  }
 }
 
 .btn {
