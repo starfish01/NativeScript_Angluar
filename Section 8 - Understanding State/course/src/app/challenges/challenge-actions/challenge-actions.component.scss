@@ -1,0 +1,23 @@
+/* Add mobile styles for the component here.  */
+/* Add mobile styles for the component here.  */
+@import '../../theme/colors';
+
+FlexboxLayout {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 300;
+    &.completed {
+        background-color: $success;
+    }
+    &.failed {
+        background-color: $fail;
+    }
+    &.reset {
+        background-color: transparent;
+        color: $primary;
+    }
+}
