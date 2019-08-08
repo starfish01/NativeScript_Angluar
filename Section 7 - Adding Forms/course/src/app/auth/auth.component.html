@@ -1,0 +1,19 @@
+<ns-action-bar [title]="'Login'" [showBackbutton]="false" [hasMenu]="false"></ns-action-bar>
+<StackLayout class="form">
+    <StackLayout class="input-field">
+        <Label [ngClass]="{invalid: false}" class="label" text="E-mail"></Label>
+        <TextField [autocorrect]=false autocapitalizationType="type" keyboardType="email" class="input" returnKeyType="next"></TextField>
+        <Label *ngIf="false" text="Please enter a valid e-mail"></Label>
+      </StackLayout>
+      <StackLayout class="input-field">
+          <Label [ngClass]="{invalid: false}" class="label" text="Password"></Label>
+          <TextField hint="min 6 characters" [secure]="true" [autocorrect]=false autocapitalizationType="type" returnKeyType="done" class="input"></TextField>
+          <Label *ngIf="false" text="Please enter a valid Password"></Label>
+        </StackLayout>
+  <Button
+    text="Login"
+    class="btn btn-primary"
+    nsRouterLink="/challenges"
+    [clearHistory]="true"
+  ></Button>
+</StackLayout>

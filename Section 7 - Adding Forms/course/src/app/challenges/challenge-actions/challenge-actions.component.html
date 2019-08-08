@@ -1,0 +1,6 @@
+
+<FlexboxLayout>
+  <Button class="btn btn-primary completed" text="Completed" (tap)="onAction('complete')"></Button>
+  <Button class="btn btn-primary failed" text="Failed" (tap)="onAction('fail')"></Button>
+  <Button class="btn btn-primary reset" [text]="cancelText" (tap)="onAction('cancel')"></Button>
+</FlexboxLayout>

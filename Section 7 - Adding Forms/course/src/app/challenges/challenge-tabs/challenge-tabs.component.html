@@ -1,0 +1,12 @@
+<ns-action-bar [title]="'Tabs'"></ns-action-bar>
+
+<TabView androidTabsPosition="bottom">
+  <page-router-outlet *tabItem="{ title: 'Today', iconSource: 'res://check' }" name="today">
+  </page-router-outlet>
+
+  <page-router-outlet
+    *tabItem="{ title: 'Current Challenge', iconSource: 'res://trophy' }"
+    name="currentChallenge"
+  >
+  </page-router-outlet>
+</TabView>
