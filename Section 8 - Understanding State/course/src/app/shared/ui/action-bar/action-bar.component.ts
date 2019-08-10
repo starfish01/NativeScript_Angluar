@@ -11,47 +11,48 @@ declare var android: any;
     styleUrls: ["./action-bar.component.css"]
 })
 export class ActionBarComponent implements OnInit {
-
-
     @Input() title: string;
-    @Input() showBackbutton = true;
+    @Input() showBackButton = true;
     @Input() hasMenu = true;
 
-    constructor(private page: Page, private router: RouterExtensions, private ui: UiService) {}
+    constructor(
+      private page: Page,
+      private router: RouterExtensions,
+      private uiService: UiService
+    ) {}
 
     ngOnInit() {}
 
     get android() {
-        return isAndroid;
-    }
-
-    onLoadedActionBar() {
-        if (isAndroid) {
-            const androidToolbar = this.page.actionBar.nativeView;
-            let btnColour = "#171717"
-            if(this.hasMenu) {
-                let btnColour = "#FFFFFF"
-            }
-
-            const backButton = androidToolbar.getNavigationIcon();
-            if (backButton) {
-                backButton.setColorFilter(
-                    android.graphics.Color.parseColor(btnColour),
-                    (<any>android.graphics).PorterDuff.Mode.SRC_ATOP
-                );
-            }
-        }
+      return isAndroid;
     }
 
     get canGoBack() {
-        return this.router.canGoBack() && this.showBackbutton;
+      return this.router.canGoBack() && this.showBackButton;
     }
 
     onGoBack() {
-        this.router.backToPreviousPage();
+      this.router.backToPreviousPage();
+    }
+
+    onLoadedActionBar() {
+      if (isAndroid) {
+        const androidToolbar = this.page.actionBar.nativeView;
+        const backButton = androidToolbar.getNavigationIcon();
+        let color = '#171717';
+        if (this.hasMenu) {
+          color = '#ffffff'
+        }
+        if (backButton) {
+          backButton.setColorFilter(
+            android.graphics.Color.parseColor(color),
+            (<any>android.graphics).PorterDuff.Mode.SRC_ATOP
+          );
+        }
+      }
     }
 
     onToggleMenu() {
-        this.ui.toggleDrawer();
+      this.uiService.toggleDrawer();
     }
 }

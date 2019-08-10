@@ -1,63 +1,68 @@
 <ns-action-bar
   [title]="isLogin ? 'Login' : 'Signup'"
-  [showBackbutton]="false"
+  [showBackButton]="false"
   [hasMenu]="false"
 ></ns-action-bar>
 <StackLayout class="form" [formGroup]="form">
   <StackLayout class="input-field">
     <Label
-      [ngClass]="{ invalid: !emailControlIsVaild }"
       class="label"
-      text="E-mail"
+      text="E-Mail"
+      [ngClass]="{ invalid: !emailControlIsValid }"
     ></Label>
     <TextField
-      [autocorrect]="false"
-      [autocapitalizationType]="false"
-      keyboardType="email"
       class="input"
       returnKeyType="next"
+      keyboardType="email"
+      [autocorrect]="false"
+      autocapitalizationType="none"
       formControlName="email"
       #emailEl
     ></TextField>
     <Label
-      *ngIf="!emailControlIsVaild"
-      text="Please enter a valid e-mail"
+      *ngIf="!emailControlIsValid"
+      text="Please enter a valid email."
     ></Label>
   </StackLayout>
   <StackLayout class="input-field">
     <Label
-      [ngClass]="{ invalid: !passwordControlIsVaild }"
       class="label"
       text="Password"
+      [ngClass]="{ invalid: !passwordControlIsValid }"
     ></Label>
     <TextField
-      hint="min 6 characters"
-      [secure]="true"
-      [autocorrect]="false"
-      [autocapitalizationType]="false"
-      returnKeyType="done"
       class="input"
+      returnKeyType="done"
+      [autocorrect]="false"
+      autocapitalizationType="none"
+      [secure]="true"
+      hint="Min 6 characters"
       formControlName="password"
+      (returnPress)="onDone()"
       #passwordEl
     ></TextField>
     <Label
-      *ngIf="!passwordControlIsVaild"
-      text="Please enter a valid Password"
+      *ngIf="!passwordControlIsValid"
+      text="Must be 6+ characters long."
     ></Label>
   </StackLayout>
+  <Button
+    class="btn btn-flat"
+    [text]="isLogin ? 'Signup instead' : 'Login instead'"
+    (tap)="onSwitch()"
+  ></Button>
+  <Button
+    [text]="isLogin ? 'Login' : 'Signup'"
+    class="btn btn-primary btn-rounded-lg"
+    (tap)="onSubmit()"
+    [isEnabled]="form.valid"
+  ></Button>
+
 
   <Button
-  [text]="isLogin ? 'Signup Instead' : 'Login Instead'"
-  class="btn-flat"
-(tap)="onSwitch()"
+  text="Skip"
+  (tap)="onSignin()"
 ></Button>
 
-  <Button
-    text="Login"
-    class="btn btn-primary"
-    nsRouterLink="/challenges"
-    [clearHistory]="true"
-    [isEnabled]="form.valid"
-    (tap)="onSubmit()"
-  ></Button>
+
 </StackLayout>

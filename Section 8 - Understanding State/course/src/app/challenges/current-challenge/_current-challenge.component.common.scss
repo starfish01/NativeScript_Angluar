@@ -1,4 +1,4 @@
-@import "../../theme/colors";
+@import '../../../theme/colors';
 
 .page {
   flex-direction: column;
@@ -37,7 +37,4 @@
 .not-settable {
     background-color: #ccc;
     color: #535353;
-}
-.fa {
-  font-family: 'FontAwesome', 'Font-Awesome';
 }

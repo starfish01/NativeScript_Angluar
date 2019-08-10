@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
                 this.drawer.toggleDrawerState();
             }
         });
-        this.ui.setRootVCR(this.vcRef);
+        this.ui.seRootVCRef(this.vcRef);
     }
 
     ngOnDestroy(): void {

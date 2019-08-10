@@ -18,11 +18,11 @@ export class UiService {
         this._drawerState.next(null);
     }
 
-    setRootVCR (vcRef: ViewContainerRef){
+    seRootVCRef (vcRef: ViewContainerRef){
         this._rootVCR = vcRef;
     }
 
-    getRootVCR(){
+    getRootVCRef(){
         return this._rootVCR;
     }
 }
