@@ -21,3 +21,28 @@ FlexboxLayout {
         color: $primary;
     }
 }
+
+.btn-alt {
+    font-size: 30;
+    margin-top: 15;
+}
+
+.animate-button {
+    //name of the animate we are using. THis is the slide-up set below
+    animation-name: slide-up;
+    // This states how many times the animation should take place
+    animation-iteration-count: 1;
+    // This states how long the animation should take
+    animation-duration: 0.8s;
+    // This states what position the animation should end at
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(30);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

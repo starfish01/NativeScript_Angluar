@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
+import { Component, OnInit } from "@angular/core";
+import { ModalDialogParams } from "nativescript-angular/modal-dialog";
+import { DayStatus } from "../day.model";
 
 @Component({
-  selector: 'ns-day-modal',
-  templateUrl: './day-modal.component.html',
-  styleUrls: ['./day-modal.component.css']
+    selector: "ns-day-modal",
+    templateUrl: "./day-modal.component.html",
+    styleUrls: ["./day-modal.component.css"]
 })
 export class DayModalComponent implements OnInit {
-
-  constructor(private modalParams: ModalDialogParams) { }
+    constructor(private modalParams: ModalDialogParams) {}
 
     loadedDate: Date;
 
-  ngOnInit() {
-    this.loadedDate = (this.modalParams.context as {date: Date}).date
-  }
+    ngOnInit() {
+        this.loadedDate = (this.modalParams.context as { date: Date }).date;
+    }
 
-  onHandleInput(action: 'complete' | 'fail' | 'cancel') {
-      this.modalParams.closeCallback(action);
-  }
-
+    onHandleInput(action: DayStatus) {
+        this.modalParams.closeCallback(action);
+    }
 }

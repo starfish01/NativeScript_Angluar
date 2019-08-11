@@ -6,6 +6,8 @@ import { UiService } from "~/app/shared/ui.service";
 import { ChallengeService } from "../challenges.service";
 import { Challenge } from "../challenge.model";
 import { Subscription } from "rxjs";
+import { Day, DayStatus } from "../day.model";
+import { dateProperty } from "tns-core-modules/ui/date-picker/date-picker";
 
 @Component({
     selector: "ns-current-challenge",
@@ -17,55 +19,62 @@ import { Subscription } from "rxjs";
     moduleId: module.id
 })
 export class CurrentChallengeComponent implements OnInit, OnDestroy {
-    weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    weekDays = ["S", "M", "T", "W", "T", "F", "S"];
     currentChallenge: Challenge;
     private curChallengeSub: Subscription;
 
     constructor(
-      private modalDialog: ModalDialogService,
-      private vcRef: ViewContainerRef,
-      private uiService: UiService,
-      private challengeService: ChallengeService
+        private modalDialog: ModalDialogService,
+        private vcRef: ViewContainerRef,
+        private uiService: UiService,
+        private challengeService: ChallengeService
     ) {}
 
     ngOnInit() {
-      this.curChallengeSub = this.challengeService.currentChallenge.subscribe(
-        challenge => {
-          this.currentChallenge = challenge;
-        }
-      );
+        this.curChallengeSub = this.challengeService.currentChallenge.subscribe(
+            challenge => {
+                this.currentChallenge = challenge;
+            }
+        );
+    }
+
+    getIsSettable(dayInMonth: number) {
+        return dayInMonth <= new Date().getDate();
     }
 
     getRow(index: number, day: { dayInMonth: number; dayInWeek: number }) {
-      const startRow = 1;
-      const weekRow = Math.floor(index / 7);
-      const firstWeekDayOfMonth = new Date(
-        new Date().getFullYear(),
-        new Date().getMonth(),
-        1
-      ).getDay();
-      const irregularRow = day.dayInWeek < firstWeekDayOfMonth ? 1 : 0;
+        const startRow = 1;
+        const weekRow = Math.floor(index / 7);
+        const firstWeekDayOfMonth = new Date(
+            new Date().getFullYear(),
+            new Date().getMonth(),
+            1
+        ).getDay();
+        const irregularRow = day.dayInWeek < firstWeekDayOfMonth ? 1 : 0;
 
-      return startRow + weekRow + irregularRow;
+        return startRow + weekRow + irregularRow;
     }
 
-    onChangeStatus() {
-      this.modalDialog
-        .showModal(DayModalComponent, {
-          fullscreen: true,
-          viewContainerRef: this.uiService.getRootVCRef()
-            ? this.uiService.getRootVCRef()
-            : this.vcRef,
-          context: { date: new Date() }
-        })
-        .then((action: string) => {
-          console.log(action);
-        });
+    onChangeStatus(day: Day) {
+        if (!this.getIsSettable(day.dayInMonth)) {
+            return;
+        }
+        this.modalDialog
+            .showModal(DayModalComponent, {
+                fullscreen: true,
+                viewContainerRef: this.uiService.getRootVCRef()
+                    ? this.uiService.getRootVCRef()
+                    : this.vcRef,
+                context: { date: day.date }
+            })
+            .then((status: DayStatus) => {
+                this.challengeService.updateDayStatus(day.dayInMonth, status);
+            });
     }
 
     ngOnDestroy() {
-      if (this.curChallengeSub) {
-        this.curChallengeSub.unsubscribe();
-      }
+        if (this.curChallengeSub) {
+            this.curChallengeSub.unsubscribe();
+        }
     }
 }
