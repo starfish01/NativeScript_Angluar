@@ -12,9 +12,13 @@ FlexboxLayout {
     width: 300;
     &.completed {
         background-color: $success;
+        border-width: 1;
+        border-color: $success;
     }
     &.failed {
         background-color: $fail;
+        border-width: 1;
+        border-color: $success;
     }
     &.reset {
         background-color: transparent;

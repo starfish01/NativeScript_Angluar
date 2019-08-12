@@ -11,9 +11,21 @@ export class DayModalComponent implements OnInit {
     constructor(private modalParams: ModalDialogParams) {}
 
     loadedDate: Date;
+    loadedStatus: 'complete' | 'fail' = null;
 
     ngOnInit() {
-        this.loadedDate = (this.modalParams.context as { date: Date }).date;
+        const params = (this.modalParams.context as { date: Date, status: DayStatus });
+
+        this.loadedDate = params.date;
+
+        if(params.status === DayStatus.Completed) {
+            this.loadedStatus = 'complete';
+        } else if (params.status === DayStatus.Failed) {
+            this.loadedStatus = 'fail'
+        } else {
+            this.loadedStatus = null;
+        }
+
     }
 
     onHandleInput(action: DayStatus) {

@@ -7,5 +7,9 @@
 </FlexboxLayout>
 <FlexboxLayout class="page" *ngIf="currentDay">
   <Label [text]="currentDay.date | date"></Label>
-  <ns-challenge-actions (actionSelect)="onActionSelected($event)" [cancelText]="'Reset'"></ns-challenge-actions>
+  <ns-challenge-actions
+  (actionSelect)="onActionSelected($event)"
+  [cancelText]="'Reset'"
+  [chosen]="getActionName(currentDay.status)">
+  </ns-challenge-actions>
 </FlexboxLayout>
