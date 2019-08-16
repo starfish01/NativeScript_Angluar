@@ -56,13 +56,7 @@
     class="btn btn-primary btn-rounded-lg"
     (tap)="onSubmit()"
     [isEnabled]="form.valid"
+    *ngIf="!isLoading"
   ></Button>
-
-
-  <Button
-  text="Skip"
-  (tap)="onSignin()"
-></Button>
-
-
+  <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 </StackLayout>

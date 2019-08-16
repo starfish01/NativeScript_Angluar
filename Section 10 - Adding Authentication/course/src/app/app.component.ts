@@ -1,57 +1,65 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ChangeDetectorRef, ViewContainerRef } from "@angular/core";
-import { UiService } from "./shared/ui.service";
-import { Subscription } from "rxjs";
-import { RadSideDrawerComponent } from "nativescript-ui-sidedrawer/angular/side-drawer-directives";
-import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef,
+  ViewContainerRef
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { RadSideDrawerComponent } from 'nativescript-ui-sidedrawer/angular/side-drawer-directives';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+
+import { UIService } from './shared/ui.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
-    selector: "ns-app",
-    moduleId: module.id,
-    templateUrl: "./app.component.html"
+  selector: 'ns-app',
+  moduleId: module.id,
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(RadSideDrawerComponent, {static: false}) drawerComponent: RadSideDrawerComponent;
+  activeChallenge = '';
+  private drawerSub: Subscription;
+  private drawer: RadSideDrawer;
 
-    @ViewChild(RadSideDrawerComponent, { static: false }) drawerComponent: RadSideDrawerComponent;
+  constructor(
+    private uiService: UIService,
+    private changeDetectionRef: ChangeDetectorRef,
+    private vcRef: ViewContainerRef,
+    private authService: AuthService
+  ) {}
 
-    activeChallenge: string = '';
-    private drawerSub: Subscription;
-    private drawer: RadSideDrawer;
-    private vcRef: ViewContainerRef;
+  ngOnInit() {
+    this.drawerSub = this.uiService.drawerState.subscribe(() => {
+      if (this.drawer) {
+        this.drawer.toggleDrawerState();
+      }
+    });
+    this.uiService.setRootVCRef(this.vcRef);
+  }
 
+  ngAfterViewInit() {
+    this.drawer = this.drawerComponent.sideDrawer;
 
-    onChallengeInput(challengeDescription: string) {
-        this.activeChallenge = challengeDescription;
+    this.changeDetectionRef.detectChanges();
+  }
+
+  onChallengeInput(challengeDescription: string) {
+    this.activeChallenge = challengeDescription;
+    console.log('onChallengeInput: ', challengeDescription);
+  }
+
+  onLogout() {
+    this.uiService.toggleDrawer();
+    this.authService.logout();
+  }
+
+  ngOnDestroy() {
+    if (this.drawerSub) {
+      this.drawerSub.unsubscribe();
     }
-
-    constructor(private ui: UiService, private changeDirectionRef: ChangeDetectorRef){
-
-    }
-
-    ngOnInit(): void {
-        this.drawerSub = this.ui.drawerState.subscribe(()=>{
-            if(this.drawer){
-                this.drawer.toggleDrawerState();
-            }
-        });
-        this.ui.seRootVCRef(this.vcRef);
-    }
-
-    ngOnDestroy(): void {
-        if(this.drawerSub) {
-            this.drawerSub.unsubscribe();
-        }
-    }
-
-    ngAfterViewInit(): void {
-        this.drawer = this.drawerComponent.sideDrawer;
-
-        this.changeDirectionRef.detectChanges();
-    }
-
-    onLogout() {
-        this.ui.toggleDrawer();
-    }
-
-
-
+  }
 }

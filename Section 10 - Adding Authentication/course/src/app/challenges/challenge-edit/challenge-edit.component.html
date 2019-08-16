@@ -4,14 +4,45 @@
 ></ns-action-bar>
 <FlexboxLayout class="form">
   <StackLayout class="input-field">
-    <Label [ngClass]="{invalid: !titleCtrl.valid && titleCtrl.touched}" class="label" text="Title"></Label>
-    <TextField class="input" [(ngModel)]="title" #titleCtrl="ngModel" required returnKeyType="next"></TextField>
-    <Label *ngIf="!titleCtrl.valid && titleCtrl.touched" text="Please enter a valid title"></Label>
+    <Label
+      class="label"
+      text="Title"
+      [ngClass]="{ invalid: !titleCtrl.valid && titleCtrl.touched }"
+    ></Label>
+    <TextField
+      class="input"
+      returnKeyType="next"
+      required
+      [(ngModel)]="title"
+      #titleCtrl="ngModel"
+    ></TextField>
+    <Label
+      *ngIf="!titleCtrl.valid && titleCtrl.touched"
+      text="Please enter a valid title."
+    ></Label>
   </StackLayout>
   <StackLayout class="input-field">
-      <Label [ngClass]="{invalid: !descriptionCtrl.valid && descriptionCtrl.touched}" class="label" text="Description"></Label>
-      <TextView returnKeyType="done" [(ngModel)]="description" #descriptionCtrl="ngModel" required class="input"></TextView>
-      <Label *ngIf="!descriptionCtrl.valid && descriptionCtrl.touched" text="Please enter a valid description"></Label>
-    </StackLayout>
-    <Button  (tap)="onSubmit(titleCtrl.value, descriptionCtrl.value)" [isEnabled]="titleCtrl.valid && descriptionCtrl.valid" class="btn btn-primary" text="Save"></Button>
+    <Label
+      class="label"
+      text="Description"
+      [ngClass]="{ invalid: !descriptionCtrl.valid && descriptionCtrl.touched }"
+    ></Label>
+    <TextView
+      class="input"
+      returnKeyType="done"
+      required
+      [(ngModel)]="description"
+      #descriptionCtrl="ngModel"
+    ></TextView>
+    <Label
+      *ngIf="!descriptionCtrl.valid && descriptionCtrl.touched"
+      text="Please enter a valid description."
+    ></Label>
+  </StackLayout>
+  <Button
+    class="btn btn-primary"
+    text="Save"
+    [isEnabled]="titleCtrl.valid && descriptionCtrl.valid"
+    (tap)="onSubmit(titleCtrl.value, descriptionCtrl.value)"
+  ></Button>
 </FlexboxLayout>

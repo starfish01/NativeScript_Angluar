@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { TextField } from 'tns-core-modules/ui/text-field';
 
+import { AuthService } from './auth.service';
+
 @Component({
   selector: 'ns-auth',
   templateUrl: './auth.component.html',
@@ -14,10 +16,14 @@ export class AuthComponent implements OnInit {
   emailControlIsValid = true;
   passwordControlIsValid = true;
   isLogin = true;
-  @ViewChild('passwordEl', { static: false }) passwordEl: ElementRef<TextField>;
-  @ViewChild('emailEl', { static: false }) emailEl: ElementRef<TextField>;
+  isLoading = false;
+  @ViewChild('passwordEl', {static: false}) passwordEl: ElementRef<TextField>;
+  @ViewChild('emailEl', {static: false}) emailEl: ElementRef<TextField>;
 
-  constructor(private router: RouterExtensions) {}
+  constructor(
+    private router: RouterExtensions,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -40,10 +46,6 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  onSignin() {
-    this.router.navigate(['/challenges'], { clearHistory: true });
-  }
-
   onSubmit() {
     this.emailEl.nativeElement.focus();
     this.passwordEl.nativeElement.focus();
@@ -58,13 +60,30 @@ export class AuthComponent implements OnInit {
     this.form.reset();
     this.emailControlIsValid = true;
     this.passwordControlIsValid = true;
+    this.isLoading = true;
     if (this.isLogin) {
-      console.log('Logging in...');
+      this.authService.login(email, password).subscribe(
+        resData => {
+          this.isLoading = false;
+          this.router.navigate(['/challenges']);
+        },
+        err => {
+          console.log(err);
+          this.isLoading = false;
+        }
+      );
     } else {
-      console.log('Signing up ...');
+      this.authService.signUp(email, password).subscribe(
+        resData => {
+          this.isLoading = false;
+          this.router.navigate(['/challenges']);
+        },
+        err => {
+          console.log(err);
+          this.isLoading = false;
+        }
+      );
     }
-
-    this.router.navigate(['/challenges'], { clearHistory: true });
   }
 
   onDone() {

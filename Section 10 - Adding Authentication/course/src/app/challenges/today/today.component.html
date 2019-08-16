@@ -4,7 +4,7 @@
 ></ns-action-bar>
 
 <FlexboxLayout class="page" *ngIf="!currentDay">
-  <Label textAlignment="center" class="h1" text="No challenge found!"></Label>
+  <Label text="No challenge found!"></Label>
   <Button
     class="btn btn-primary"
     text="Create One!"
@@ -17,7 +17,7 @@
   <ns-challenge-actions
     (actionSelect)="onActionSelected($event)"
     [chosen]="getActionName()"
-    cancelText="Reset"
     [startDone]="getActionName() === 'complete' || getActionName() === 'fail'"
+    cancelText="Reset"
   ></ns-challenge-actions>
 </FlexboxLayout>

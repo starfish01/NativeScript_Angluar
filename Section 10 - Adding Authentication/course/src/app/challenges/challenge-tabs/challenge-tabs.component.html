@@ -1,16 +1,13 @@
-<ns-action-bar [title]="'Tabs'"></ns-action-bar>
-
 <TabView androidTabsPosition="bottom" *ngIf="!isLoading">
-  <page-router-outlet *tabItem="{ title: 'Today', iconSource: 'res://check' }" name="today">
-  </page-router-outlet>
-
-  <page-router-outlet
+  <StackLayout *tabItem="{ title: 'Today', iconSource: 'res://check' }">
+    <page-router-outlet name="today"> </page-router-outlet>
+  </StackLayout>
+  <StackLayout
     *tabItem="{ title: 'Current Challenge', iconSource: 'res://trophy' }"
-    name="currentChallenge"
   >
-  </page-router-outlet>
+    <page-router-outlet name="currentChallenge"> </page-router-outlet>
+  </StackLayout>
 </TabView>
-
-<FlexboxLayout *ngIf="isLoading" justifyContent="center" alignItems="center">
+<FlexboxLayout justifyContent="center" alignItems="center" *ngIf="isLoading">
   <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 </FlexboxLayout>
